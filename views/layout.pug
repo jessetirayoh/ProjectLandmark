@@ -1,0 +1,50 @@
+doctype html
+html
+    head
+        title Landmark
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        script.
+            o = !{JSON.stringify(myData)}
+        script(src='./javascripts/jquery.min.js')
+        script(src='./javascripts/layout.js')
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+    body
+        nav.navbar.navbar-expand-md.navbar-dark.fixed-top.transboxNav.n
+            img(src='https://res.cloudinary.com/ds4czpq2x/image/upload/v1512611847/fa17g03/logo.png', width='60', height='40')
+            a.navbar-brand(href='/fa17g03/')
+                h.a(style='color: #212529') <strong>Landmark</strong>
+            a.navbar-brand(href='javascript:window.history.back();')
+                h.a.back(style='color: #212529') Back
+            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExampleDefault', aria-controls='navbarsExampleDefault', aria-expanded='false', aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            #navbarsExampleDefault.collapse.navbar-collapse
+                .container(style='max-width:400px')
+                    p.m-0.text-center.text-white SFSU, Fall 2017. For Demonstration Only.
+                ul.navbar-nav.mr-auto
+                ul.navbar-nav.mr-auto-right
+                    li.nav-item.active
+                        a.nav-link(href='/fa17g03/about')
+                            h.a(style='color: #212529') ABOUT
+                    li.nav-item.active
+                        a.nav-link(href='/fa17g03/agents')
+                            h.a(style='color: #212529') AGENTS
+                    if session.user === NULL
+                        li.nav-item.active
+                            a.nav-link(href='/fa17g03/login')
+                                h.a LOGIN
+                    else
+                        li.nav-item.active
+                            .dropdown
+                                a.active.nav-link(href='/fa17g03/dashboard')
+                                    h.a <strong>#{(session.user.fname).toUpperCase()} #{(session.user.lname).toUpperCase()}</strong>
+                                    .dropdown-content
+                                        a.a(href='/fa17g03/dashboard') Dashboard
+                                        a.a(href='/fa17g03/logout') Logout
+        block content
+        block foot
+        #top
+            i.fa.fa-chevron-up.icon-white
+        footer.footer.transbox
+            .container
+                p.m-0.text-center.text-white Landmark &copy; 2017

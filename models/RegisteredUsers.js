@@ -1,0 +1,1 @@
+"use strict";module.exports=(e,t)=>{return e.define("RegisteredUsers",{email:{type:t.STRING},fname:{type:t.STRING},lname:{type:t.STRING},password:{type:t.STRING},type:{type:t.STRING},agree:{type:t.STRING}})};

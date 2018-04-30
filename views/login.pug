@@ -1,0 +1,107 @@
+extends layout
+
+block content
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js', integrity='sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh', crossorigin='anonymous')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js', integrity='sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1', crossorigin='anonymous')
+    style.
+        .navbar {
+            background: #007bff;
+            border-bottom: thin solid #fff;
+            opacity: .8
+        }
+    script(src='https://www.google.com/recaptcha/api.js', async='', defer='')
+    script.
+        window.onload = function () {
+            var a = document.querySelector("#g-recaptcha-response");
+            a && a.setAttribute("required", "required")
+        };
+    #myModal.modal.fade
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    h4.modal-title Modal Window
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                .modal-body
+                    form(action="mailto:projectlandmark2017@gmail.com?subject=ResetPassword", method="post")
+                        .form-group
+                            label.control-label(for='recipient-name') Enter your email address below and we'll send you a link to reset your password.
+                            input#recipient-name.form-control(type='text', placeholder='Email')
+                        .modal-footer
+                            button#send.btn.btn-default(type='submit') Send
+                            button.btn.bt-default(type='button', data-dismiss='modal') Close
+    #body
+        #back
+            .backRight
+            .backLeft
+        #slideBox
+            .topLayer
+                .left
+                    .content
+                        h2 Sign Up
+                        form(action="/fa17g03/login", id='login', method='post', required)
+                            .form-group
+                                label.control-label Email Address
+                                input.form-control(type='email', name='email', minlength='3', maxlength='20', placeholder='Email' required)
+                            .form-group
+                                label.control-label First Name
+                                input.form-control(type='text', name='fname', minlength='3', maxlength='20', placeholder='First Name' required)
+                            .form-group
+                                label.control-label Last Name
+                                input.form-control(type='text', name='lname', minlength='3', maxlength='20', placeholder='Last Name' required)
+                            .form-group
+                                label.control-label Password
+                                input.form-control(type='password', name='password', id='password' minlength='3', maxlength='20', placeholder='Password' required)
+                                br
+                                label.control-label Confirm Password
+                                br
+                                input.form-control(type='password', name='password2', id='password2', minlength='3', maxlength='20', placeholder='Password' required)
+                            .form-group
+                                label.control-label Buyer/Seller/Agent?
+                                select.form-control#option(name='type', required='')
+                                    option(value='') Select
+                                    option(value='buyer') Buyer
+                                    option(value='seller') Seller
+                                    option(value='agent') Agent
+                            .form-group
+                                input(type='checkbox', name='agree', value='y' required)
+                                |
+                                |
+                                a(href="#", data-toggle='modal', data-target='#myModal', data-title='Terms', data-body='By accepting to our terms of services, you cannot sue us!', style="color:#03A9F4") Accept Terms of Services
+                                br
+                                br
+                                .g-recaptcha(style="transform:scale(0.82);-webkit-transform:scale(0.82);transform-origin:0 0;-webkit-transform-origin:0 0;" data-sitekey='6Lc1bDkUAAAAALRK8L3nWKReCN33PXAAamvXWUMo')
+                            #msg
+                            br
+                            button#mySubmit(type='submit') Sign up
+                            button#goLeft.off(type='button') Login
+                            Br
+                            Br
+                            Br
+                .right
+                    .content
+                        br
+                        br
+                        if(exists != undefined)
+                            p
+                                font(color='red').alert.alert-danger #{exists}
+                        br
+                        h2 Login
+                        form(action="/fa17g03/dashboard", id='dashboard', method='post')
+                            .form-group
+                                label.control-label Email Address
+                                input.form-control(type='email', name='email', maxlength='20', placeholder='Email' required)
+                            .form-group
+                                label.control-label Password
+                                input.form-control(type='password', name='password', maxlength='20', placeholder='Password' required)
+                            br
+                            br
+                            a(href='#', data-toggle='modal', data-target='#myModal', data-title='Reset Password', data-body='Shoot us an email and we will send you a link to reset your password.', style="color:#03A9F4") Forgot Password?
+                            br
+                            br
+                            button(type='submit') Login
+                            button#goRight.off(type='button') Sign Up
+                            br
+                            br
+                            if(message != undefined)
+                                p
+                                    font(color='red') #{message}

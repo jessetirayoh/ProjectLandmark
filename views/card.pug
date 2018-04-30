@@ -1,0 +1,14 @@
+script.
+    add.push("#{response[index].Address}")
+script
+    include ../public/javascripts/map.js
+li.card
+    a(href='/fa17g03/property?id=' + response[index].Address)
+        #overlay
+            #{img[index]}
+        .bottom-left.shadow(style='white-space: nowrap;')
+            ul.price.bl <strong> $ #{response[index].Price.toLocaleString('en')} </strong>
+                h.bds(style='font-size: 20px;') #{response[index].Bedrooms} Bed(s) · !{`&nbsp;`.repeat(1)}
+                h.bas(style='font-size: 20px;') #{response[index].Bathrooms} Bathroom(s) !{`&nbsp;`.repeat(1)}
+            ul.bl #{response[index].Address}, #{response[index].City}, #{response[index].Zip}
+            br
